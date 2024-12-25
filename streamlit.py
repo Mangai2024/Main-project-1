@@ -35,8 +35,8 @@ def load_model(file_path):
 
 # Define paths for the .pkl files
 parkinson_model_path = "XGBparkinson.pkl"
-kidney_model_path = "https://github.com/GOWRISHANKARK80/Main-project-1/blob/main/XGBliver.pkl"        
-liver_model_path = https://github.com/GOWRISHANKARK80/Main-project-1/blob/main/XGBparkinson.pkl          
+#kidney_model_path =       
+#liver_model_path =          
 
 # Load the models
 try:
