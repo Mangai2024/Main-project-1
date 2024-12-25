@@ -5,7 +5,6 @@ import numpy as np
 import pickle
 import os
 
-# Function to connect to the PostgreSQL database
 def get_db_connection():
     conn = psycopg2.connect(
         host="ec2-13-201-77-225.ap-south-1.compute.amazonaws.com",
@@ -13,18 +12,18 @@ def get_db_connection():
     return conn
 
 # Function to execute a query and return the result as a pandas DataFrame
-def run_query(query):
-    conn = get_db_connection()
-    if conn is None:
-        return None
-    try:
-        df = pd.read_sql(query, conn)
-        return df
-    except Exception as e:
-        st.error(f"Error executing query: {e}")
-        return None
-    finally:
-        conn.close()
+#def run_query(query):
+    #conn = get_db_connection()
+    #if conn is None:
+        #return None
+    #try:
+        #df = pd.read_sql(query, conn)
+        #return df
+    #except Exception as e:
+        #st.error(f"Error executing query: {e}")
+        #return None
+    #finally:
+        #conn.close()
 
 # Function to load a model from a specified file path
 def load_model(file_path):
