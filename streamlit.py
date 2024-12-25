@@ -106,10 +106,10 @@ elif nav == "Kidney Disease":
     "Specific Gravity": st.selectbox("Specific Gravity", [1.005, 1.01, 1.015]),
     "Albumin": st.selectbox("Albumin", [0, 1, 2, 3]),  # Assuming Albumin is categorical
     "Sugar": st.selectbox("Sugar", [0, 1]),  # Assuming Sugar is binary (0 or 1)
-    "Red Blood Cells": st.selectbox("Red Blood Cells", ("Normal":0, "Abnormal":1)),
-    "Pus Cell": st.selectbox("Pus Cell", ("Normal", "Abnormal")),
-    "Pus Cell Clumps": st.selectbox("Pus Cell Clumps", ("Present", "Not Present")),
-    "Bacteria": st.selectbox("Bacteria", ("Present", "Not Present")),
+    "Red Blood Cells": st.selectbox("Red Blood Cells", [0, 1]),
+    "Pus Cell": st.selectbox("Pus Cell", [0, 1]),
+    "Pus Cell Clumps": st.selectbox("Pus Cell Clumps", [1, 0]),
+    "Bacteria": st.selectbox("Bacteria", [1, 0]),
     "Blood Glucose Random": st.number_input("Blood Glucose Random", min_value=0.0, value=0.0),
     "Blood Urea": st.number_input("Blood Urea", min_value=0.0, value=0.0),
     "Serum Creatinine": st.number_input("Serum Creatinine", min_value=0.0, value=0.0),
