@@ -7,10 +7,6 @@ import numpy as np
 def get_db_connection():
     conn = psycopg2.connect(
         host="ec2-13-201-77-225.ap-south-1.compute.amazonaws.com",
-        port=5432,
-        database="retail_order",
-        user="postgres",
-        password="apple123"
     )
     return conn
 
@@ -38,10 +34,6 @@ def load_model(file_path):
     with open(file_path, "rb") as file:
         return pickle.load(file)
 
-# Define paths for the .pkl files
-#parkinson_model_path = r"G:/Data Science/project/models/XGBparkinsons.pkl"  
-#kidney_model_path = r"G:/Data Science/project/models/XGBkidney.pkl"         
-#liver_model_path = r"G:/Data Science/project/models/XGBliver.pkl"  
 # Define paths for the .pkl files
 parkinson_model_path = r"G:\Data Science\project\Streamlit\env\Scripts\XGBparkinson.pkl"
 kidney_model_path = r"G:\Data Science\project\Streamlit\env\Scripts\XGBkidney.pkl"         
@@ -110,12 +102,21 @@ elif nav == "Kidney Disease":
 
     # Define input fields for Kidney disease prediction
     kidney_inputs = {
-        "Age": st.number_input("Age", min_value=1, max_value=120, value=30),
-        "Blood Pressure": st.number_input("Blood Pressure", min_value=1, max_value=200, value=80),
-        "Specific Gravity": st.selectbox("Specific Gravity", [1.005, 1.01, 1.015]),
-        "Albumin": st.selectbox("Albumin", [1, 2, 3]),
-        # Add other necessary features based on your model requirements...
-    }
+    "Age": st.number_input("Age", min_value=1, max_value=120, value=30),
+    "Blood Pressure": st.number_input("Blood Pressure", min_value=1, max_value=200, value=80),
+    "Specific Gravity": st.selectbox("Specific Gravity", [1.005, 1.01, 1.015]),
+    "Albumin": st.selectbox("Albumin", [0, 1, 2, 3]),  # Assuming Albumin is categorical
+    "Sugar": st.selectbox("Sugar", [0, 1]),  # Assuming Sugar is binary (0 or 1)
+    "Red Blood Cells": st.selectbox("Red Blood Cells", ("Normal", "Abnormal")),
+    "Pus Cell": st.selectbox("Pus Cell", ("Normal", "Abnormal")),
+    "Pus Cell Clumps": st.selectbox("Pus Cell Clumps", ("Present", "Not Present")),
+    "Bacteria": st.selectbox("Bacteria", ("Present", "Not Present")),
+    "Blood Glucose Random": st.number_input("Blood Glucose Random", min_value=0.0, value=0.0),
+    "Blood Urea": st.number_input("Blood Urea", min_value=0.0, value=0.0),
+    "Serum Creatinine": st.number_input("Serum Creatinine", min_value=0.0, value=0.0),
+    "Sodium": st.number_input("Sodium", min_value=0.0, value=0.0),
+    "Potassium": st.number_input("Potassium", min_value=0.0, value=0.0),
+}
 
     # Button for prediction
     if st.button("Predict Kidney Disease"):
@@ -135,25 +136,37 @@ elif nav == "Liver Disease":
 
     # Define input fields for Liver disease prediction
     liver_inputs = {
-        "Age": st.number_input("Age", min_value=1, max_value=120, value=30),
-        "Gender": st.selectbox("Gender", ("Male", "Female")),
-        "Total_Bilirubin": st.number_input("Total Bilirubin", min_value=1e-5, value=1e-5), 
-        "Direct_Bilirubin": st.number_input("Direct Bilirubin", min_value=1e-5, value=1e-5), 
-        # Add other necessary features based on your model requirements...
-    }
+    "Age": st.number_input("Age", min_value=1, max_value=120, value=30),
+    "Gender": st.selectbox("Gender", ("1.0", "0.0")),
+    "Total_Bilirubin": st.number_input("Total Bilirubin", min_value=0.0, value=0.0),
+    "Direct_Bilirubin": st.number_input("Direct Bilirubin", min_value=0.0, value=0.0),
+    "Alkaline_Phosphotase": st.number_input("Alkaline Phosphotase", min_value=0, value=0),
+    "Alamine_Aminotransferase": st.number_input("Alamine Aminotransferase", min_value=0, value=0),
+    "Aspartate_Aminotransferase": st.number_input("Aspartate Aminotransferase", min_value=0, value=0),
+    "Total_Proteins": st.number_input("Total Proteins", min_value=0.0, value=0.0),
+    "Albumin": st.number_input("Albumin", min_value=0.0, value=0.0),
+    "Albumin_and_Globulin_Ratio": st.number_input("Albumin and Globulin Ratio", min_value=0.0, value=0.0),
+}
 
-    # Button for prediction
-    if st.button("Predict Liver Disease"):
-        try:
-            liver_features = np.array([list(liver_inputs.values())], dtype=float)
-            liver_prediction = model_liver.predict(liver_features)
-            if liver_prediction[0] == 1:
-                st.success("The model predicts that the individual has Liver disease.")
-            else:
-                st.success("The model predicts that the individual does not have Liver disease.")
+   # Button for prediction
+if st.button("Predict Liver Disease"):
+    try:
+        # Convert inputs to numpy array for prediction
+        liver_features = np.array([list(liver_inputs.values())], dtype=float)
         
-        except Exception as e:
-            st.error(f"An error occurred during prediction: {e}")
+        # Make prediction using the loaded model
+        liver_prediction = model_liver.predict(liver_features)
+        
+        # Output prediction result based on predicted values
+        if liver_prediction[0] == 1:
+            st.success("The model predicts that the individual has Liver disease.")
+        elif liver_prediction[0] == 0:
+            st.success("The model predicts that the individual does not have Liver disease.")
+        else:
+            st.warning("Unexpected prediction output.")
+    
+    except Exception as e:
+        st.error(f"An error occurred during prediction: {e}")
 
 # Navigation options for other diseases can be added here
 
