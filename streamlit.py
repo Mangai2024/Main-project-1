@@ -34,7 +34,7 @@ def load_model(file_path):
         return pickle.load(file)
 
 # Define paths for the .pkl files
-parkinson_model_path = "https://github.com/GOWRISHANKARK80/Main-project-1/blob/main/XGBparkinson.pkl "
+parkinson_model_path = "XGBparkinson.pkl"
 kidney_model_path = "https://github.com/GOWRISHANKARK80/Main-project-1/blob/main/XGBliver.pkl"        
 liver_model_path = https://github.com/GOWRISHANKARK80/Main-project-1/blob/main/XGBparkinson.pkl          
 
