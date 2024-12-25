@@ -2,6 +2,8 @@ import streamlit as st
 import pandas as pd
 import psycopg2
 import numpy as np
+import pickle
+import os
 
 # Function to connect to the PostgreSQL database
 def get_db_connection():
@@ -23,9 +25,6 @@ def run_query(query):
         return None
     finally:
         conn.close()
-
-import pickle
-import os
 
 # Function to load a model from a specified file path
 def load_model(file_path):
