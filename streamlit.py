@@ -150,7 +150,7 @@ elif nav == "Liver Disease":
     if st.button("Predict"):
         try:
             liver_features = np.array([list(liver_inputs.values())], dtype=float)
-            liver_prediction = model_kidney.predict(liver_features)
+            liver_prediction = model_liver.predict(liver_features)
             if liver_prediction[0] == 1:
                 st.success("The model predicts that the individual has liver disease.")
             else:
