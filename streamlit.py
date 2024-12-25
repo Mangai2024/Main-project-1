@@ -5,11 +5,11 @@ import numpy as np
 import pickle
 import os
 
-def get_db_connection():
-    conn = psycopg2.connect(
-        host="ec2-13-201-77-225.ap-south-1.compute.amazonaws.com",
-    )
-    return conn
+#def get_db_connection():
+    #conn = psycopg2.connect(
+       # host="ec2-13-201-77-225.ap-south-1.compute.amazonaws.com",
+    #)
+   # return conn
 
 # Function to execute a query and return the result as a pandas DataFrame
 #def run_query(query):
