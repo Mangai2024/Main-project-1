@@ -119,7 +119,7 @@ elif nav == "Kidney Disease":
 }
 
     # Button for prediction
-    if st.button("Predict Kidney Disease"):
+    if st.button("Predict"):
         try:
             kidney_features = np.array([list(kidney_inputs.values())], dtype=float)
             kidney_prediction = model_kidney.predict(kidney_features)
@@ -147,27 +147,17 @@ elif nav == "Liver Disease":
     "Albumin": st.number_input("Albumin", min_value=0.0, value=0.0),
     "Albumin_and_Globulin_Ratio": st.number_input("Albumin and Globulin Ratio", min_value=0.0, value=0.0),
 }
-
-   # Button for prediction
-if st.button("Predict Liver Disease"):
-    try:
-        # Convert inputs to numpy array for prediction
-        liver_features = np.array([list(liver_inputs.values())], dtype=float)
+    # Button for prediction
+    if st.button("Predict"):
+        try:
+            liver_features = np.array([list(liver_inputs.values())], dtype=float)
+            liver_prediction = model_kidney.predict(liver_features)
+            if liver_prediction[0] == 1:
+                st.success("The model predicts that the individual has liver disease.")
+            else:
+                st.success("The model predicts that the individual does not have liver disease.")
         
-        # Make prediction using the loaded model
-        liver_prediction = model_liver.predict(liver_features)
-        
-        # Output prediction result based on predicted values
-        if liver_prediction[0] == 1:
-            st.success("The model predicts that the individual has Liver disease.")
-        elif liver_prediction[0] == 0:
-            st.success("The model predicts that the individual does not have Liver disease.")
-        else:
-            st.warning("Unexpected prediction output.")
-    
-    except Exception as e:
-        st.error(f"An error occurred during prediction: {e}")
-
-# Navigation options for other diseases can be added here
+        except Exception as e:
+            st.error(f"An error occurred during prediction: {e}")
 
 st.text("Thank you for using the dashboard!")
