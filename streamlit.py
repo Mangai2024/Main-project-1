@@ -1,39 +1,25 @@
 import streamlit as st
 import pandas as pd
-import psycopg2
 import numpy as np
 import pickle
 import os
 
-def get_db_connection():
-    conn = psycopg2.connect(
-        host="ec2-13-201-77-225.ap-south-1.compute.amazonaws.com",
-    )
-    return conn
+# Streamlit title
+st.title("Disease Prediction")
 
-# Streamlit dashboard logic
-st.title("Liver Disease Prediction")    
-# Function to load a model from a specified file path
+# Cache model loading
+@st.cache_resource
 def load_model(file_path):
     if not os.path.exists(file_path):
-        raise FileNotFoundError(f"Model file not found: {file_path}")
+        st.error(f"Model file not found: {file_path}")
+        st.stop()
     with open(file_path, "rb") as file:
         return pickle.load(file)
 
-# Define paths for the .pkl files
+# Paths to models
 parkinson_model_path = "XGBparkinson.pkl"
-kidney_model_path ="XGBkidney.pkl"       
-liver_model_path ="RFliver.pkl"          
-
-# Load the models
-try:
-    model_parkinson = load_model(parkinson_model_path)
-    model_kidney = load_model(kidney_model_path)
-    model_liver = load_model(liver_model_path)
-
-    print("Models loaded successfully!")
-except FileNotFoundError as e:
-    print(e)
+kidney_model_path = "XGBkidney.pkl"
+liver_model_path = "RFliver.pkl"       
 
 # Streamlit UI
 st.title("Disease Prediction")
