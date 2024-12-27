@@ -10,7 +10,9 @@ def get_db_connection():
         host="ec2-13-201-77-225.ap-south-1.compute.amazonaws.com",
     )
     return conn
-    
+
+# Streamlit dashboard logic
+st.title("Liver Disease Prediction")    
 # Function to load a model from a specified file path
 def load_model(file_path):
     if not os.path.exists(file_path):
@@ -20,7 +22,7 @@ def load_model(file_path):
 
 # Define paths for the .pkl files
 parkinson_model_path = "XGBparkinson.pkl"
-kidney_model_path ="XGBparkinson.pkl"       
+kidney_model_path ="XGBkidney.pkl"       
 liver_model_path ="RFliver.pkl"          
 
 # Load the models
