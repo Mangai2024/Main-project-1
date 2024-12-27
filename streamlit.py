@@ -17,9 +17,9 @@ def load_model(file_path):
         return pickle.load(file)
 
 # Paths to models
-parkinson_model_path = "XGBparkinson.pkl"
-kidney_model_path = "XGBkidney.pkl"
-liver_model_path = "RFliver.pkl"       
+parkinson_model_path = "/content/XGBparkinson.pkl"
+kidney_model_path = "/content/XGBkidney.pkl"
+liver_model_path = "/content/XGBliver.pkl"       
 
 # Streamlit UI
 st.title("Disease Prediction")
