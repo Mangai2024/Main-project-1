@@ -21,7 +21,7 @@ def load_model(file_path):
 # Define paths for the .pkl files
 parkinson_model_path = "XGBparkinson.pkl"
 kidney_model_path ="XGBkidney.pkl"       
-liver_model_path ="XGBliver.pkl"          
+liver_model_path ="RFliver.pkl"          
 
 # Load the models
 try:
