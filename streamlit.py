@@ -17,9 +17,9 @@ def load_model(file_path):
         return pickle.load(file)
 
 # Paths to models
-parkinson_model_path = "https://github.com/GOWRISHANKARK80/Main-project-1/blob/main/XGBparkinson.pkl"
-kidney_model_path = "https://github.com/GOWRISHANKARK80/Main-project-1/blob/main/XGBkidney.pkl"
-liver_model_path = "https://github.com/GOWRISHANKARK80/Main-project-1/blob/main/XGBliver.pkl"       
+parkinson_model_path = "XGBparkinson.pkl"
+kidney_model_path = "XGBkidney.pkl"
+liver_model_path = "XGBliver.pkl"       
 
 # Input fields for user
 nav = st.sidebar.radio("Select Disease Prediction", ["Parkinson's Disease", "Kidney Disease", "Liver Disease"])
