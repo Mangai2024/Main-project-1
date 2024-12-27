@@ -1,6 +1,6 @@
 streamlit
+psycopg2
 pandas
-psycopg2-binary
 numpy
 xgboost
 scikit-learn
