@@ -20,7 +20,7 @@ def load_model(file_path):
 
 # Define paths for the .pkl files
 parkinson_model_path = "https://github.com/GOWRISHANKARK80/Main-project-1/blob/main/XGBparkinson.pkl"
-kidney_model_path ="https://github.com/GOWRISHANKARK80/Main-project-1/blob/main/XGBparkinson.pkl"       
+kidney_model_path ="https://github.com/GOWRISHANKARK80/Main-project-1/blob/main/XGBkidney.pkl"       
 liver_model_path ="https://github.com/GOWRISHANKARK80/Main-project-1/blob/main/RFliver.pkl"          
 
 # Load the models
