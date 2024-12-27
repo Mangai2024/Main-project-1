@@ -21,9 +21,6 @@ parkinson_model_path = "https://github.com/GOWRISHANKARK80/Main-project-1/blob/m
 kidney_model_path = "https://github.com/GOWRISHANKARK80/Main-project-1/blob/main/XGBkidney.pkl"
 liver_model_path = "https://github.com/GOWRISHANKARK80/Main-project-1/blob/main/XGBliver.pkl"       
 
-# Streamlit UI
-st.title("Disease Prediction")
-
 # Input fields for user
 nav = st.sidebar.radio("Select Disease Prediction", ["Parkinson's Disease", "Kidney Disease", "Liver Disease"])
 
