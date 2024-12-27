@@ -1,16 +1,9 @@
 import streamlit as st
 import pandas as pd
-import psycopg2
 import numpy as np
 import pickle
 import os
 import sklearn
-
-def get_db_connection():
-    conn = psycopg2.connect(
-        host="ec2-13-201-77-225.ap-south-1.compute.amazonaws.com",
-    )
-    return conn
 
 # Function to load a model from a specified file path
 def load_model(file_path):
