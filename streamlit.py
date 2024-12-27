@@ -1,6 +1,9 @@
 import streamlit as st
+import pandas as pd
+import psycopg2
 import numpy as np
 import pickle
+import os
 import sklearn
 
 def get_db_connection():
@@ -15,11 +18,11 @@ def load_model(file_path):
         raise FileNotFoundError(f"Model file not found: {file_path}")
     with open(file_path, "rb") as file:
         return pickle.load(file)
-
-# Paths to models
-parkinson_model_path = "XGBparkinson.pkl"
-kidney_model_path = "XGBkidney.pkl"
-liver_model_path = "XGBliver.pkl"  
+          
+# Define paths for the .pkl files
+parkinson_model_path = "G:\Data Science\project\Streamlit\env\Scripts\XGBparkinsons.pkl"
+kidney_model_path ="G:\Data Science\project\Streamlit\env\Scripts\XGBkidney.pkl"       
+liver_model_path ="G:\Data Science\project\Streamlit\env\Scripts\XGBliver.pkl"    
 
 # Load the models
 try:
@@ -33,6 +36,7 @@ except FileNotFoundError as e:
 
 # Streamlit UI
 st.title("Disease Prediction")
+
 # Input fields for user
 nav = st.sidebar.radio("Select Disease Prediction", ["Parkinson's Disease", "Kidney Disease", "Liver Disease"])
 
