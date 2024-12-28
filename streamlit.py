@@ -95,14 +95,17 @@ elif nav == "Kidney Disease":
     Appetite = st.selectbox("Appetite", ["good", "poor"])
     Pedal_Edema = st.selectbox("Pedal Edema", ["yes", "no"])
     Anemia = st.selectbox("Anemia", ["yes", "no"])
-
-
-
+    
+    # Map Specific Gravity to encoded values (if required)
+    specific_gravity_mapping = {1.005: 0, 1.01: 1, 1.015: 2}  # Example mapping
+    Specific_Gravity = specific_gravity_mapping.get(Specific_Gravity, -1)  # Default to -1 if not mapped
+    
     # Prepare input features as a 2D array for prediction
     input_features = np.array([[Age,Blood_Pressure,Specific_Gravity,Albumin,Sugar,Red_Blood_Cells,Pus_Cell,
                                 Pus_Cell_Clumps,Bacteria,Blood_Glucose_Random,Blood_Urea,Serum_Creatinine,Sodium,Potassium,
-                                Hemoglobin,Packed_Cell_Volume,White_Blood_Cell_Count,Red_Blood_Cell_Count,Hypertension,
-                                Diabetes_Mellitus,Coronary_Artery_Disease,Appetite,Pedal_Edema,Anemia]])
+                                Hemoglobin,Packed_Cell_Volume,White_Blood_Cell_Count,Red_Blood_Cell_Count,1 if Hypertension == "yes" else 0,
+                                1 if Diabetes_Mellitus == "yes" else 0,1 if Coronary_Artery_Disease == "yes" else 0,1 if Appetite == "poor" else 0,
+                                1 if Pedal_Edema == "yes" else 0,1 if Anemia == "yes" else 0]]).astype(float)
     # Cleanse string columns (if necessary)
     for col in range(input_features.shape[1]):
         input_features[:, col] = [str(x).encode('utf-8').decode('utf-8') if isinstance(x, str) else x for x in input_features[:, col]]
@@ -130,7 +133,7 @@ elif nav == "Liver Disease":
     # Define input fields for Liver disease prediction
     
     Age= st.number_input("Age", min_value=1, max_value=120, value=30)
-    Gender= st.selectbox("Gender", ("1.0", "0.0"))
+    Gender= st.selectbox("Gender", ("0", "1"))
     Total_Bilirubin= st.number_input("Total Bilirubin", min_value=0.0, value=0.0)
     Direct_Bilirubin= st.number_input("Direct Bilirubin", min_value=0.0, value=0.0)
     Alkaline_Phosphotase= st.number_input("Alkaline Phosphotase", min_value=0, value=0)
