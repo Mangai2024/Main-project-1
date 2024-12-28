@@ -1,7 +1,7 @@
 import streamlit as st
 import numpy as np
 import pickle
-from sklearn.ensemble import XGboostClassifier
+from xgboost import XGBClassifier
 import scikit-learn
 
 # Streamlit UI
