@@ -102,7 +102,9 @@ elif nav == "Kidney Disease":
                                 Pus_Cell_Clumps,Bacteria,Blood_Glucose_Random,Blood_Urea,Serum_Creatinine,Sodium,Potassium,
                                 Hemoglobin,Packed_Cell_Volume,White_Blood_Cell_Count,Red_Blood_Cell_Count,Hypertension,
                                 Diabetes_Mellitus,Coronary_Artery_Disease,Appetite,Pedal_Edema,Anemia]])
-    
+    # Cleanse string columns (if necessary)
+    for col in range(input_features.shape[1]):
+    input_features[:, col] = [str(x).encode('utf-8').decode('utf-8') if isinstance(x, str) else x for x in input_features[:, col]]
     # Button for prediction
     if st.button("Predict"):
         try:
@@ -141,7 +143,9 @@ elif nav == "Liver Disease":
     input_features = np.array([[Age,Gender,Total_Bilirubin,Direct_Bilirubin,Alkaline_Phosphotase,
                                 Alamine_Aminotransferase,Aspartate_Aminotransferase,Total_Proteins,
                                 Albumin,Albumin_and_Globulin_Ratio]])
-    
+    # Cleanse string columns (if necessary)
+    for col in range(input_features.shape[1]):
+    input_features[:, col] = [str(x).encode('utf-8').decode('utf-8') if isinstance(x, str) else x for x in input_features[:, col]]
     # Button for prediction
     if st.button("Predict"):
         try:
