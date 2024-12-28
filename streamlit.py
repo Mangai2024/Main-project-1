@@ -133,7 +133,7 @@ elif nav == "Liver Disease":
     # Define input fields for Liver disease prediction
     
     Age= st.number_input("Age", min_value=1, max_value=120, value=30)
-    Gender= st.selectbox("Gender", ("0", "1"))
+    Gender= st.selectbox("Gender", ("1.0", "0.0"))
     Total_Bilirubin= st.number_input("Total Bilirubin", min_value=0.0, value=0.0)
     Direct_Bilirubin= st.number_input("Direct Bilirubin", min_value=0.0, value=0.0)
     Alkaline_Phosphotase= st.number_input("Alkaline Phosphotase", min_value=0, value=0)
@@ -144,9 +144,9 @@ elif nav == "Liver Disease":
     Albumin_and_Globulin_Ratio= st.number_input("Albumin and Globulin Ratio", min_value=0.0, value=0.0)
 
     # Prepare input features as a 2D array for prediction
-    input_features = np.array([[Age,Gender,Total_Bilirubin,Direct_Bilirubin,Alkaline_Phosphotase,
+    input_features = np.array([[Age,float(Gender),Total_Bilirubin,Direct_Bilirubin,Alkaline_Phosphotase,
                                 Alamine_Aminotransferase,Aspartate_Aminotransferase,Total_Proteins,
-                                Albumin,Albumin_and_Globulin_Ratio]])
+                                Albumin,Albumin_and_Globulin_Ratio]]).astype(float)
     # Cleanse string columns (if necessary)
     for col in range(input_features.shape[1]):
         input_features[:, col] = [str(x).encode('utf-8').decode('utf-8') if isinstance(x, str) else x for x in input_features[:, col]]
