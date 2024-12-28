@@ -70,31 +70,34 @@ elif nav == "Kidney Disease":
         st.error("Model file not found. Please check the file path.")
         st.stop() 
     # Define input fields for Kidney disease prediction
-    
-    Age= st.number_input("Age", min_value=1, max_value=120, value=30)
-    Blood_Pressure= st.number_input("Blood Pressure", min_value=1, max_value=200, value=80)
-    Specific_Gravity= st.selectbox("Specific Gravity", min_value=0.0, value=0.0)
-    Albumin= st.selectbox("Albumin", min_value=0.0, value=0.0)  # Assuming Albumin is categorical
-    Sugar= st.selectbox("Sugar", min_value=0.0, value=0.0) # Assuming Sugar is binary (0 or 1)
-    Red_Blood_Cells= st.selectbox("Red Blood Cells", [0, 1])
-    Pus_Cell= st.selectbox("Pus Cell", [0, 1])
-    Pus_Cell_Clumps= st.selectbox("Pus Cell Clumps", [1, 0])
-    Bacteria= st.selectbox("Bacteria", [1, 0])
-    Blood_Glucose_Random= st.number_input("Blood Glucose Random", min_value=0.0, value=0.0)
-    Blood_Urea= st.number_input("Blood Urea", min_value=0.0, value=0.0)
-    Serum_Creatinine= st.number_input("Serum Creatinine", min_value=0.0, value=0.0)
-    Sodium= st.number_input("Sodium", min_value=0.0, value=0.0)
-    Potassium= st.number_input("Potassium", min_value=0.0, value=0.0)
+
+    Age = st.number_input("Age", min_value=1, max_value=120, value=30)
+    Blood_Pressure = st.number_input("Blood Pressure", min_value=1, max_value=200, value=80)
+    Specific_Gravity = st.number_input("Specific Gravity", min_value=1.0, max_value=1.03, value=1.02, format="%.2f")
+    Albumin = st.selectbox("Albumin", [0, 1, 2, 3, 4])  # Assuming Albumin is categorical (0-4)
+    Sugar = st.selectbox("Sugar", [0, 1])  # Binary (0 or 1)
+    Red_Blood_Cells = st.selectbox("Red Blood Cells", ["normal", "abnormal"])  # Categorical
+    Pus_Cell = st.selectbox("Pus Cell", ["normal", "abnormal"])  # Categorical
+    Pus_Cell_Clumps = st.selectbox("Pus Cell Clumps", ["present", "notpresent"])  # Categorical
+    Bacteria = st.selectbox("Bacteria", ["present", "notpresent"])  # Categorical
+    Blood_Glucose_Random = st.number_input("Blood Glucose Random", min_value=0.0, value=0.0)
+    Blood_Urea = st.number_input("Blood Urea", min_value=0.0, value=0.0)
+    Serum_Creatinine = st.number_input("Serum Creatinine", min_value=0.0, value=0.0)
+    Sodium = st.number_input("Sodium", min_value=0.0, value=0.0)
+    Potassium = st.number_input("Potassium", min_value=0.0, value=0.0)
     Hemoglobin = st.number_input("Hemoglobin", min_value=0.0, value=0.0)
     Packed_Cell_Volume = st.number_input("Packed Cell Volume", min_value=0.0, value=0.0)
     White_Blood_Cell_Count = st.number_input("White Blood Cell Count", min_value=0.0, value=0.0)
     Red_Blood_Cell_Count = st.number_input("Red Blood Cell Count", min_value=0.0, value=0.0)
+
+    # Categorical health conditions
     Hypertension = st.selectbox("Hypertension", ["yes", "no"])
     Diabetes_Mellitus = st.selectbox("Diabetes Mellitus", ["yes", "no"])
     Coronary_Artery_Disease = st.selectbox("Coronary Artery Disease", ["yes", "no"])
     Appetite = st.selectbox("Appetite", ["good", "poor"])
     Pedal_Edema = st.selectbox("Pedal Edema", ["yes", "no"])
     Anemia = st.selectbox("Anemia", ["yes", "no"])
+
     
     # Map Specific Gravity to encoded values (if required)
     specific_gravity_mapping = {1.005: 0, 1.01: 1, 1.015: 2}  # Example mapping
