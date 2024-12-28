@@ -104,11 +104,11 @@ elif nav == "Kidney Disease":
     Specific_Gravity = specific_gravity_mapping.get(Specific_Gravity, -1)  # Default to -1 if not mapped
     
     # Prepare input features as a 2D array for prediction
-    input_features = np.array([[Age,Blood_Pressure,Specific_Gravity,Albumin,Sugar,Red_Blood_Cells,Pus_Cell,
-                                Pus_Cell_Clumps,Bacteria,Blood_Glucose_Random,Blood_Urea,Serum_Creatinine,Sodium,Potassium,
-                                Hemoglobin,Packed_Cell_Volume,White_Blood_Cell_Count,Red_Blood_Cell_Count,1 if Hypertension == "yes" else 0,
-                                1 if Diabetes_Mellitus == "yes" else 0,1 if Coronary_Artery_Disease == "yes" else 0,1 if Appetite == "poor" else 0,
-                                1 if Pedal_Edema == "yes" else 0,1 if Anemia == "yes" else 0]]).astype(float)
+    input_features = np.array([[Age,Blood_Pressure,Specific_Gravity,Albumin,Sugar,1 if Red_Blood_Cells == "abnormal" else 0,1 if Pus_Cell == "abnormal" else 0,
+                                1 if Pus_Cell_Clumps == "present" else 0,1 if Bacteria == "present" else 0,Blood_Glucose_Random,Blood_Urea,
+                                Serum_Creatinine,Sodium,Potassium,Hemoglobin,Packed_Cell_Volume,White_Blood_Cell_Count,Red_Blood_Cell_Count,
+                                1 if Hypertension == "yes" else 0,1 if Diabetes_Mellitus == "yes" else 0,1 if Coronary_Artery_Disease == "yes" else 0,
+                                1 if Appetite == "poor" else 0,1 if Pedal_Edema == "yes" else 0,1 if Anemia == "yes" else 0]]).astype(float)
     # Cleanse string columns (if necessary)
     for col in range(input_features.shape[1]):
         input_features[:, col] = [str(x).encode('utf-8').decode('utf-8') if isinstance(x, str) else x for x in input_features[:, col]]
