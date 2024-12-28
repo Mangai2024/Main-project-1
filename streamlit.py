@@ -1,8 +1,8 @@
 import streamlit as st
 import numpy as np
 import pickle
-import xgboost
-import sklearn
+from sklearn.ensemble import XGboostClassifier
+import scikit-learn
 
 # Streamlit UI
 st.title("Disease Prediction")
