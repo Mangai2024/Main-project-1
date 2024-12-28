@@ -154,7 +154,7 @@ elif nav == "Liver Disease":
     if st.button("Predict"):
         try:
             prediction = liver_model.predict(input_features)
-            if prediction[0] == 1:
+            if prediction[0] == 0:
                 st.success("The model predicts that the individual does not have Liver disease.")
             else:
                 st.success("The model predicts that the individual has Liver disease.")
