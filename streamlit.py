@@ -133,7 +133,7 @@ elif nav == "Liver Disease":
     # Define input fields for Liver disease prediction
     
     Age= st.number_input("Age", min_value=1, max_value=120, value=30)
-    Gender= st.selectbox("Gender", ("1.0", "0.0"))
+    Gender = st.selectbox("Gender", [1.0, 0.0], format_func=lambda x: "Male" if x == 1.0 else "Female")
     Total_Bilirubin= st.number_input("Total Bilirubin", min_value=0.0, value=0.0)
     Direct_Bilirubin= st.number_input("Direct Bilirubin", min_value=0.0, value=0.0)
     Alkaline_Phosphotase= st.number_input("Alkaline Phosphotase", min_value=0, value=0)
