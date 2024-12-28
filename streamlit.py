@@ -15,7 +15,7 @@ if nav == "Parkinson's Disease":
     
     # Load the Parkinson's model
     try:
-        parkinson_model = pickle.load(open(r'G:\Data Science\project\Streamlit\env\Scripts\XGBparkinson.pkl', 'rb'))
+        parkinson_model = pickle.load(open(r'https://github.com/GOWRISHANKARK80/Main-project-1/blob/main/XGBparkinson.pkl', 'rb'))
     except FileNotFoundError:
         st.error("Model file not found. Please check the file path.")
         st.stop()
@@ -120,7 +120,7 @@ elif nav == "Liver Disease":
 
     # Load the liver's model
     try:
-        liver_model = pickle.load(open(r'G:\Data Science\project\Streamlit\env\Scripts\XGBLiver.pkl', 'rb'))
+        liver_model = pickle.load(open(r'https://github.com/GOWRISHANKARK80/Main-project-1/blob/main/XGBLiver.pkl', 'rb'))
     except FileNotFoundError:
         st.error("Model file not found. Please check the file path.")
         st.stop()    
