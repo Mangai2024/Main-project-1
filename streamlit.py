@@ -73,9 +73,9 @@ elif nav == "Kidney Disease":
     
     Age= st.number_input("Age", min_value=1, max_value=120, value=30)
     Blood_Pressure= st.number_input("Blood Pressure", min_value=1, max_value=200, value=80)
-    Specific_Gravity= st.selectbox("Specific Gravity", [1.005, 1.01, 1.015])
-    Albumin= st.selectbox("Albumin", [0, 1, 2, 3])  # Assuming Albumin is categorical
-    Sugar= st.selectbox("Sugar", [0, 1]) # Assuming Sugar is binary (0 or 1)
+    Specific_Gravity= st.selectbox("Specific Gravity", min_value=0.0, value=0.0)
+    Albumin= st.selectbox("Albumin", min_value=0, value=20)  # Assuming Albumin is categorical
+    Sugar= st.selectbox("Sugar", min_value=0, value=20) # Assuming Sugar is binary (0 or 1)
     Red_Blood_Cells= st.selectbox("Red Blood Cells", [0, 1])
     Pus_Cell= st.selectbox("Pus Cell", [0, 1])
     Pus_Cell_Clumps= st.selectbox("Pus Cell Clumps", [1, 0])
