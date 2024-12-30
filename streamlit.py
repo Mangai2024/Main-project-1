@@ -5,17 +5,17 @@ import xgboost as xgb
 import pandas as pd
 
 # Streamlit UI
-st.title("Disease Prediction")
+st.title("Multiple Disease Prediction")
 
 # Sidebar for disease selection
-nav = st.sidebar.radio("Select Disease Prediction", ["Parkinson's Disease", "Kidney Disease", "Liver Disease"])
+nav = st.sidebar.radio("Select Multiple Disease Prediction", ["Parkinson's Disease", "Kidney Disease", "Liver Disease"])
 
 if nav == "Parkinson's Disease":
     st.header("Parkinson's Disease Prediction")
     
     # Load the Parkinson's model
     try:
-        parkinson_model = pickle.load(open(r'XGBparkinson.pkl', 'rb'))
+        parkinson_model = pickle.load(open(r'E:\MINI_PROJECTS_STREAMLIT\XGBparkinsons.pkl', 'rb'))
     except FileNotFoundError:
         st.error("Model file not found. Please check the file path.")
         st.stop()
@@ -60,12 +60,13 @@ if nav == "Parkinson's Disease":
                 st.success("The model predicts that the individual does not have Parkinson's disease.")
         except Exception as e:
             st.error(f"An error occurred during prediction: {e}")
-
+            
+            
 elif nav == "Kidney Disease":
     st.header("Kidney Disease Prediction")
     # Load the kidney model
     try:
-        kidney_model = pickle.load(open(r'GNBkidney.pkl', 'rb'))
+        kidney_model = pickle.load(open(r'E:\MINI_PROJECTS_STREAMLIT\GNBkidney.pkl', 'rb'))
     except FileNotFoundError:
         st.error("Model file not found. Please check the file path.")
         st.stop() 
@@ -122,7 +123,8 @@ elif nav == "Kidney Disease":
                 st.success("The model predicts that the individual does not have Kidney disease.")
         except Exception as e:
             st.error(f"An error occurred during prediction: {e}")
-
+            
+            
 elif nav == "Liver Disease":
     st.header("Liver Disease Prediction")
 
